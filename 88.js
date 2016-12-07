@@ -7,26 +7,25 @@
  */
 var merge = function (nums1, m, nums2, n) {
     var result = [];
-    var right = nums1;
+    var right = 0;
     for (var index = 0; index < n; index++) {
         var element = nums2[index];
-
-        var array = right.slice();
+        var array = nums1.slice(right);
         var i = search(array, element);
         var left = array.slice(0, i);
         for (var j = array.length; j > i; j--) {
             array[j] = array[j - 1];
         }
         array[i] = element;
-        console.log(left);
-        right = array.slice(i + 1);
+        right = right + i;
+        console.log(right);
         result = result.concat(left,element);
     }
     console.log(result);
 };
 
 function test() {
-    var nums1 = [1, 2, 7, 10], nums2 = [3, 5, 6, 9, 12];
+    var nums1 = [1, 2, 4, 8, 10], nums2 = [3, 5, 6, 9, 12];
     merge(nums1, 4, nums2, 5);
 }
 
