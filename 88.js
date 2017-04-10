@@ -6,6 +6,22 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function (nums1, m, nums2, n) {
+
+    //starting from the last one on nums1.
+    var i = m + n - 1;
+    var j1 = m - 1;
+    var j2 = n - 1;
+    while (j2 >= 0) {
+        if (nums1[j1] == undefined || nums2[j2] > nums1[j1]) {
+            nums1[i--] = nums2[j2--];
+        } else {
+            nums1[i--] = nums1[j1--];
+        }
+    }
+    console.log(nums1);
+
+}
+var merge2 = function (nums1, m, nums2, n) {
     var result = [];
     var right = 0;
     for (var index = 0; index < n; index++) {
@@ -19,7 +35,7 @@ var merge = function (nums1, m, nums2, n) {
         array[i] = element;
         right = right + i;
         console.log(right);
-        result = result.concat(left,element);
+        result = result.concat(left, element);
     }
     console.log(result);
 };
@@ -34,8 +50,8 @@ function search(array, value) {
     if (value < array[0]) return 0;
     for (var index = 0; index < array.length; index++) {
         var element = array[index];
-        if (index == array.length - 1) return index+1;
-        if (value >= element && value <= array[index + 1]) return index+1;
+        if (index == array.length - 1) return index + 1;
+        if (value >= element && value <= array[index + 1]) return index + 1;
     }
 }
 function insertValue(value, array) {
